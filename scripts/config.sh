@@ -1,7 +1,7 @@
 #Config.sh contains commonly used directories
 #and functions if you need them
 #main project directory and also where singularity images bind /work to
-export BIND="/rsgrps/bhurwitz/scottdaniel/ebi_analysis"
+export BIND="/rsgrps/bhurwitz/scottdaniel/dfu-bubble-plots"
 export PRJ_DIR=$BIND
 
 #scripts and such
@@ -9,15 +9,8 @@ export SCRIPT_DIR="$PRJ_DIR/scripts"
 export WORKER_DIR="$SCRIPT_DIR/workers"
 
 #main download / working directory
-export DL_DIR="/rsgrps/bhurwitz/hurwitzlab/data/controlled_access/PRJEB12449"
-export DL_CANCER="$DL_DIR/cancer"
-export DL_CONTROL="$DL_DIR/control"
-export CORRPT_DIR="$DL_DIR/corrupted"
-
-#mapping for sample metadata
-export METADATA="$DL_DIR/metadata_to_readFileNames.txt"
-export CANCER_LIST="$(cut -f 8 $DL_DIR/just_cancer_metadata.txt)"
-export CONTROL_LIST="$(cut -f 8 $DL_DIR/just_control_metadata.txt)"
+export OR_DIR="/rsgrps/bhurwitz/hurwitzlab/data/raw/GWATTS/WGS/DFUDengORsamples_confirmed_correct"
+export LONG_DIR="/rsgrps/bhurwitz/hurwitzlab/data/raw/GWATTS/WGS/DFUDengLongitudinal_confirmed_correct"
 
 #sample names
 export SAMPLE_NAMES=(cancer control)
@@ -46,9 +39,9 @@ export SING_META="/metadata"
 export SING_PRJ="/scripts"
 
 #dna and reads (this is also where reports and trimmed reads go)
-export DNA_DIR="$DL_DIR"
+export DNA_DIR="$PRJ_DIR/dna"
 #centrifuge directory
-export CFUGE_DIR="$DL_DIR/cfuge"
+export CFUGE_DIR="$PRJ_DIR/cfuge"
 
 #krona charts
 export KRONA_OUT_DIR="$PRJ_DIR/krona_out"

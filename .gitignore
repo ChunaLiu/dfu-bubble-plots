@@ -99,3 +99,16 @@ ENV/
 
 # mypy
 .mypy_cache/
+*.fastq
+dna/
+cfuge/
+krona_out/
+genomes/
+bt2_index/
+alignments/
+plots/
+*.bam
+*.sam
+*.gff
+*.fa
+
