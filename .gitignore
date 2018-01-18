@@ -112,3 +112,5 @@ plots/
 *.gff
 *.fa
 
+lists_of_files/
+pbs_logs/

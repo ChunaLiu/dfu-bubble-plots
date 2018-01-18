@@ -11,13 +11,16 @@ export STEP_SIZE=10
 
 PROG=`basename $0 ".sh"`
 #Just going to put stdout and stderr together into stdout
-STDOUT_DIR="$CWD/out/$PROG"
+STDOUT_DIR="$CWD/pbs_logs/$PROG"
 
 init_dir "$STDOUT_DIR"
 
-export LIST="$PRJ_DIR"/bam_list
+export LIST="$MY_TEMP_DIR"/bam_list
 
 find $OR_DIR $LONG_DIR -iname "*.bam" | sed "s/^\.\///" | sort > $LIST
+
+mkdir -p $DNA_OR_DIR
+mkdir -p $DNA_LONG_DIR
 
 NUM_FILES=$(lc $LIST)
 

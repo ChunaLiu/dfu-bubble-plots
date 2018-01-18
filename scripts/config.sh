@@ -40,8 +40,11 @@ export SING_PRJ="/scripts"
 
 #dna and reads (this is also where reports and trimmed reads go)
 export DNA_DIR="$PRJ_DIR/dna"
+export DNA_OR_DIR="$DNA_DIR/OR"
+export DNA_LONG_DIR="$DNA_DIR/Long"
 #centrifuge directory
-export CFUGE_DIR="$PRJ_DIR/cfuge"
+export CFUGE_OR_DIR="$DNA_OR_DIR/cfuge"
+export CFUGE_LONG_DIR="$DNA_LONG_DIR/cfuge"
 
 #krona charts
 export KRONA_OUT_DIR="$PRJ_DIR/krona_out"
@@ -65,7 +68,7 @@ export ALN_DIR="$PRJ_DIR/alignments"
 
 #Single or Paired End Reads? (single || paired)
 #IMPORTANT: For paired end files see README.md for additional information
-export TYPE="paired"
+export TYPE="single"
 
 #FASTA/Q File Extension (common extensions include fasta, fa, fastq, fastq)
 #DO NOT INCLUDE the dot "."
