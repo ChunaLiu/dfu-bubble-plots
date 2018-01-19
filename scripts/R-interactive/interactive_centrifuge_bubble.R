@@ -5,8 +5,9 @@ library(ggplot2)
 
 
 #SETWD: Location of centrifuge_report.tsv files. Should all be in same directory
+setwd("/Users/Scott/dfu-bubble-plots/dna/Long/cfuge_nt/")
 #Longitudinal####
-setwd("/Users/Scott/dfu-bubble-plots/dna/Long/")
+
 
 temp = list.files(pattern="*centrifuge_report.tsv")
 myfiles = lapply(temp, read.delim)
@@ -51,8 +52,10 @@ dev.off()
 
 #write.csv(df, file = paste0(out.dir, file_name, ".csv"))
 
+
+setwd("/Users/Scott/dfu-bubble-plots/dna/OR/cfuge_nt/")
 #OR####
-setwd("/Users/Scott/dfu-bubble-plots/dna/OR/")
+
 
 temp = list.files(pattern="*centrifuge_report.tsv")
 myfiles = lapply(temp, read.delim)
