@@ -3,7 +3,7 @@
 #PBS -W group_list=bhurwitz
 #PBS -q standard
 #PBS -l place=free:shared
-#PBS -l select=1:ncpus=12:mem=68gb:pcmem=6gb
+#PBS -l select=1:ncpus=12:mem=504gb:pcmem=42gb
 #PBS -l walltime=12:00:00
 #PBS -l cput=144:00:00
 #PBS -M scottdaniel@email.arizona.edu

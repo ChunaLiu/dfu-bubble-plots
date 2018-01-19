@@ -19,7 +19,8 @@ export SAMPLE_NAMES=(cancer control)
 export MY_TEMP_DIR="$PRJ_DIR/lists_of_files"
 
 #Centrifuge Database Name ... up to but not including the ".1.cf"
-export CENT_DB="/rsgrps/bhurwitz/hurwitzlab/data/reference/cent_db/uncompressed/p+h+v"
+#now using the full ncbi "nt" database
+export CENT_DB="/rsgrps/bhurwitz/hurwitzlab/data/reference/cent_db/nt/nt"
 export DB=$(basename $CENT_DB)
 
 #what the name of the singularity centdb would be
@@ -43,8 +44,8 @@ export DNA_DIR="$PRJ_DIR/dna"
 export DNA_OR_DIR="$DNA_DIR/OR"
 export DNA_LONG_DIR="$DNA_DIR/Long"
 #centrifuge directory
-export CFUGE_OR_DIR="$DNA_OR_DIR/cfuge"
-export CFUGE_LONG_DIR="$DNA_LONG_DIR/cfuge"
+export CFUGE_OR_DIR="$DNA_OR_DIR/cfuge_nt"
+export CFUGE_LONG_DIR="$DNA_LONG_DIR/cfuge_nt"
 
 #krona charts
 export KRONA_OUT_DIR="$PRJ_DIR/krona_out"
