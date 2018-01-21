@@ -115,3 +115,7 @@ plots/
 lists_of_files/
 pbs_logs/
 .Rproj.user
+.DS_Store
+.Rhistory
+taxa/
+test.csv
