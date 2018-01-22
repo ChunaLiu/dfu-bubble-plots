@@ -3,7 +3,7 @@
 #PBS -W group_list=bhurwitz
 #PBS -q standard
 #PBS -l place=free:shared
-#PBS -l select=1:ncpus=12:mem=504gb:pcmem=42gb
+#PBS -l select=1:ncpus=12:mem=150gb:pcmem=42gb
 #PBS -l walltime=12:00:00
 #PBS -l cput=144:00:00
 #PBS -M scottdaniel@email.arizona.edu
@@ -68,7 +68,7 @@ while read FASTA; do
         BASE=$(basename $FASTA .fastq)
         R1=$SING_WD/$(basename $FASTA)
 
-        OUT_DIR=$SING_WD/$(basename $CFUGE_DIR)
+        OUT_DIR=$SING_WD/$(basename $CFUGE_LONG_DIR)
 
         echo "Doing Sample $BASE"
 
@@ -77,6 +77,7 @@ while read FASTA; do
             --report-file $OUT_DIR/"$BASE"_centrifuge_report.tsv \
             -$FILE_TYPE \
             --exclude-taxids $EXCLUDE \
+            --host-taxids $INCLUDE \
             $THREADS
     else
 
@@ -87,7 +88,7 @@ while read FASTA; do
         BASE=$(basename $FASTA .fastq)
         R1=$SING_WD/$(basename $FASTA)
 
-        OUT_DIR=$SING_WD/$(basename $CFUGE_DIR)
+        OUT_DIR=$SING_WD/$(basename $CFUGE_OR_DIR)
 
         echo "Doing Sample $BASE"
 
@@ -96,6 +97,7 @@ while read FASTA; do
             --report-file $OUT_DIR/"$BASE"_centrifuge_report.tsv \
             -$FILE_TYPE \
             --exclude-taxids $EXCLUDE \
+            --host-taxids $INCLUDE \
             $THREADS
 
     fi

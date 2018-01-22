@@ -88,8 +88,22 @@ export FILE_TYPE="q"
 #32630 are synthetic contructs (e.g. random illumina hexamer primer)
 #374840 common contaminant = Enterobacteria phage phiX174 sensu lato
 #1747 propionibacterium acnes = bacteria usually found on human skin
-export EXCLUDE="9606,32630,374840,1747"
+## 2759 Eurkaryota
+# 81077 Artificial Sequences (which includes those "synthetic constructs")
+#1456186 uncultured marine thaumarchaeote KM3_53_F08
+#export EXCLUDE="9606,32630,374840,1747"
+export EXCLUDE="81077,374840,1747,1456186"
+#--exclude-taxids
+#A comma-separated list of taxonomic IDs that will be excluded in classification procedure. The descendants from these IDs will also be exclude.
 
+#include human back in per dr. watts' advice
+#2 Bacteria superkingdom
+#2157 Archaea superkingdom
+#10239 Viruses
+#12884 Viroids
+export INCLUDE="2,2157,10239,12884"
+#--host-taxids
+#A comma-separated list of taxonomic IDs that will be preferred in classification procedure. The descendants from these IDs will also be preferred. In case some of a read's assignments correspond to these taxonomic IDs, only those corresponding assignments will be reported.
 
 #
 #
