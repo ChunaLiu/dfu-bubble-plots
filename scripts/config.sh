@@ -91,8 +91,11 @@ export FILE_TYPE="q"
 ## 2759 Eurkaryota
 # 81077 Artificial Sequences (which includes those "synthetic constructs")
 #1456186 uncultured marine thaumarchaeote KM3_53_F08
-#export EXCLUDE="9606,32630,374840,1747"
-export EXCLUDE="81077,374840,1747,1456186"
+#35779 Aster yellows phytoplasma
+#Papio   9554
+#Pan 9596
+#Macaca radiata  9548
+export EXCLUDE="81077,374840,1747,1456186,35779,2759"
 #--exclude-taxids
 #A comma-separated list of taxonomic IDs that will be excluded in classification procedure. The descendants from these IDs will also be exclude.
 
@@ -101,10 +104,11 @@ export EXCLUDE="81077,374840,1747,1456186"
 #2157 Archaea superkingdom
 #10239 Viruses
 #12884 Viroids
-export INCLUDE="2,2157,10239,12884"
+export INCLUDE="9606"
 #--host-taxids
 #A comma-separated list of taxonomic IDs that will be preferred in classification procedure. The descendants from these IDs will also be preferred. In case some of a read's assignments correspond to these taxonomic IDs, only those corresponding assignments will be reported.
-
+#NB: the "include" list will override the exclude list... i.e. if INCLUDE="2" then 
+#aster yellows phytoplasma (35779) would still be included
 #
 #
 # --------------------------------------------------

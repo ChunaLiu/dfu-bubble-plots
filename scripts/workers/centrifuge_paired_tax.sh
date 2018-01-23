@@ -77,7 +77,6 @@ while read FASTA; do
             --report-file $OUT_DIR/"$BASE"_centrifuge_report.tsv \
             -$FILE_TYPE \
             --exclude-taxids $EXCLUDE \
-            --host-taxids $INCLUDE \
             $THREADS
     else
 
@@ -97,13 +96,13 @@ while read FASTA; do
             --report-file $OUT_DIR/"$BASE"_centrifuge_report.tsv \
             -$FILE_TYPE \
             --exclude-taxids $EXCLUDE \
-            --host-taxids $INCLUDE \
             $THREADS
 
     fi
 
 done < $TMP_FILES
 
+echo "Finished at $(date)"
 #CREATE BUBBLE PLOT VISUALIZATION
 #just do this interactively later
 #or not, try one more time
