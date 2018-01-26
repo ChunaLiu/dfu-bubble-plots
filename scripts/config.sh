@@ -20,7 +20,7 @@ export MY_TEMP_DIR="$PRJ_DIR/lists_of_files"
 
 #Centrifuge Database Name ... up to but not including the ".1.cf"
 #now using the full ncbi "nt" database
-export CENT_DB="/rsgrps/bhurwitz/hurwitzlab/data/reference/cent_db/nt/nt"
+export CENT_DB="/rsgrps/bhurwitz/hurwitzlab/data/reference/cent_db/uncompressed/p+h+v"
 export DB=$(basename $CENT_DB)
 
 #what the name of the singularity centdb would be
@@ -44,8 +44,8 @@ export DNA_DIR="$PRJ_DIR/dna"
 export DNA_OR_DIR="$DNA_DIR/OR"
 export DNA_LONG_DIR="$DNA_DIR/Long"
 #centrifuge directory
-export CFUGE_OR_DIR="$DNA_OR_DIR/cfuge_nt"
-export CFUGE_LONG_DIR="$DNA_LONG_DIR/cfuge_nt"
+export CFUGE_OR_DIR="$DNA_OR_DIR/cfuge_no_filter"
+export CFUGE_LONG_DIR="$DNA_LONG_DIR/cfuge_no_filter"
 
 #krona charts
 export KRONA_OUT_DIR="$PRJ_DIR/krona_out"
@@ -95,7 +95,8 @@ export FILE_TYPE="q"
 #Papio   9554
 #Pan 9596
 #Macaca radiata  9548
-export EXCLUDE="81077,374840,1747,1456186,35779,2759"
+#export EXCLUDE="81077,374840,1747,1456186,35779,2759"
+export EXCLUDE=""
 #--exclude-taxids
 #A comma-separated list of taxonomic IDs that will be excluded in classification procedure. The descendants from these IDs will also be exclude.
 
@@ -104,7 +105,8 @@ export EXCLUDE="81077,374840,1747,1456186,35779,2759"
 #2157 Archaea superkingdom
 #10239 Viruses
 #12884 Viroids
-export INCLUDE="9606"
+#export INCLUDE="9606"
+export INCLUDE=""
 #--host-taxids
 #A comma-separated list of taxonomic IDs that will be preferred in classification procedure. The descendants from these IDs will also be preferred. In case some of a read's assignments correspond to these taxonomic IDs, only those corresponding assignments will be reported.
 #NB: the "include" list will override the exclude list... i.e. if INCLUDE="2" then 
