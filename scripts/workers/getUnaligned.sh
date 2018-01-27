@@ -32,11 +32,11 @@ while read BAM; do
 
     if [[ $BAM =~ "Long" ]]; then
 
-        samtools view -b -f 4 $BAM > "$DNA_LONG_DIR"/"$BASE".bam.un
+        samtools view -b -f 4 $BAM > "$UN_LONG_DIR"/"$BASE".bam.un
 
     else
 
-        samtools view -b -f 4 $BAM > "$DNA_OR_DIR"/"$BASE".bam.un
+        samtools view -b -f 4 $BAM > "$UN_OR_DIR"/"$BASE".bam.un
     
     fi
 

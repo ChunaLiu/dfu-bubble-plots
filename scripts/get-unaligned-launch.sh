@@ -19,8 +19,8 @@ export LIST="$MY_TEMP_DIR"/bam_list
 
 find $OR_DIR $LONG_DIR -iname "*.bam" | sed "s/^\.\///" | sort > $LIST
 
-mkdir -p $DNA_OR_DIR
-mkdir -p $DNA_LONG_DIR
+mkdir -p $UN_OR_DIR
+mkdir -p $UN_LONG_DIR
 
 NUM_FILES=$(lc $LIST)
 

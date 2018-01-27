@@ -5,7 +5,8 @@
 
 * getUnaligned-launch.sh (get non-human reads)
 * bamToFastq-launch.sh (convert to fast(q/a))
+* trimgalore-launch.sh (trim low-quality bases)
 * blast-launch.sh (blast nt databse)
-* filter-blast-launch (filter hits from blast)
+* filter-blast-launch.sh (filter hits from blast)
 * ~centrifuge-launch.sh~
 

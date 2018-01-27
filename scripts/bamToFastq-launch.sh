@@ -17,7 +17,7 @@ init_dir "$STDOUT_DIR"
 
 export LIST="$MY_TEMP_DIR"/bam_un_list
 
-find $DNA_OR_DIR $DNA_LONG_DIR -iname "*.bam.un" | sed "s/^\.\///" | sort > $LIST
+find $UN_OR_DIR $UN_LONG_DIR -iname "*.bam.un" | sed "s/^\.\///" | sort > $LIST
 
 NUM_FILES=$(lc $LIST)
 

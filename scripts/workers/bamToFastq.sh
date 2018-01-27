@@ -26,17 +26,17 @@ echo "Found $NUM_FILES files to process"
 
 while read BAM; do
 
-    BASE=$(basename $BAM .bam)
+    BASE=$(basename $BAM .bam.un)
 
     echo "Converting $BASE to fastq"
 
     if [[ $BAM =~ "Long" ]]; then
 
-        bamToFastq -i $BAM -fq "$DNA_LONG_DIR"/"$BASE".fastq
+        bamToFastq -i $BAM -fq "$UN_LONG_DIR"/"$BASE".fastq
 
     else
 
-        bamToFastq -i $BAM -fq "$DNA_OR_DIR"/"$BASE".fastq
+        bamToFastq -i $BAM -fq "$UN_OR_DIR"/"$BASE".fastq
     
     fi
 
