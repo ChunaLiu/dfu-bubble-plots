@@ -43,9 +43,16 @@ export SING_PRJ="/scripts"
 export DNA_DIR="$PRJ_DIR/dna"
 export DNA_OR_DIR="$DNA_DIR/OR"
 export DNA_LONG_DIR="$DNA_DIR/Long"
+#unaligned to human
+export UN_OR_DIR="$DNA_OR_DIR/unaligned"
+export UN_LONG_DIR="$DNA_LONG_DIR/unaligned"
+#trimmed and qc'ed
+export TM_OR_DIR="$DNA_OR_DIR/trimmed"
+export TM_LONG_DIR="$DNA_LONG_DIR/trimmed"
+
 #centrifuge directory
-export CFUGE_OR_DIR="$DNA_OR_DIR/cfuge_no_filter"
-export CFUGE_LONG_DIR="$DNA_LONG_DIR/cfuge_no_filter"
+export CFUGE_OR_DIR="$DNA_OR_DIR/cfuge"
+export CFUGE_LONG_DIR="$DNA_LONG_DIR/cfuge"
 
 #krona charts
 export KRONA_OUT_DIR="$PRJ_DIR/krona_out"
