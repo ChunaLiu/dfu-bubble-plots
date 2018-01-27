@@ -21,14 +21,14 @@ module load singularity
 # --------------------------------------------------
 cd $PRJ_DIR
 
-export FQLIST="fastq_list"
+export FQLIST="$MY_TEMP_DIR"/"fastq_list"
 
 find $UN_OR_DIR $UN_LONG_DIR -iname "*.fastq" > $FQLIST
 
 mkdir -p $TM_OR_DIR
 mkdir -p $TM_LONG_DIR
 
-export TODO="files_todo"
+export TODO="$MY_TEMP_DIR"/"files_todo"
 
 if [ -e $TODO ]; then
     rm $TODO
@@ -40,13 +40,13 @@ while read FASTQ; do
 
     if [[ $FASTQ =~ "Long" ]]; then
 
-        if [ ! -e "$TM_LONG_DIR/$(basename $FASTQ .fastq)_val_1.fq" ]; then
+        if [ ! -e "$TM_LONG_DIR/$(basename $FASTQ .fastq)_trimmed.fq" ]; then
             echo $FASTQ >> $TODO
         fi
 
     else
 
-        if [ ! -e "$TM_OR_DIR/$(basename $FASTQ .fastq)_val_1.fq" ]; then
+        if [ ! -e "$TM_OR_DIR/$(basename $FASTQ .fastq)_trimmed.fq" ]; then
             echo $FASTQ >> $TODO
         fi
 

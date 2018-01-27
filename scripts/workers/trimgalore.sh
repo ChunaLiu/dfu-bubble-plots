@@ -20,7 +20,6 @@ module load singularity
 
 unset module
 set -u
-set -x
 
 CONFIG="$SCRIPT_DIR/config.sh"
 
@@ -54,19 +53,20 @@ export trim_galore="singularity exec \
     -B $DNA_DIR:$SING_WD \
     $SING_IMG/fastqc.img trim_galore" 
 
+set -x
 echo "Running trim_galore on dna files, if any"
 for file in $(cat $TMP_FILES | grep "Long"); do
     OUT_DIR=$SING_WD/Long/trimmed
     FASTQ=$(basename $file)
     $trim_galore --length $MINTRIMLEN \
-        -o $OUT_DIR $SING_WD/Long/unaligned
+        -o $OUT_DIR $SING_WD/Long/unaligned/$FASTQ
 done
 
 for file in $(cat $TMP_FILES | grep "OR"); do
     OUT_DIR=$SING_WD/OR/trimmed
     FASTQ=$(basename $file)
     $trim_galore --length $MINTRIMLEN \
-        -o $OUT_DIR $SING_WD/OR/unaligned
+        -o $OUT_DIR $SING_WD/OR/unaligned/$FASTQ
 done
 
 echo Finished $(date)
