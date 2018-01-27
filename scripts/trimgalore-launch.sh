@@ -7,10 +7,10 @@ set -u
 source ./config.sh
 export CWD="$PWD"
 #batches of N
-export STEP_SIZE=1
+export STEP_SIZE=5
 
 PROG=`basename $0 ".sh"`
-STDOUT_DIR="$CWD/out/$PROG"
+STDOUT_DIR="$CWD/pbs_logs/$PROG"
 
 init_dir "$STDOUT_DIR" 
 
@@ -21,11 +21,12 @@ module load singularity
 # --------------------------------------------------
 cd $PRJ_DIR
 
-export DNALIST="dna_fastq_file_list"
-export RNALIST="rna_fastq_file_list"
+export FQLIST="fastq_list"
 
-find $DNA_DIR -iname "*R1.fastq" > $DNALIST
-find $RNA_DIR -iname "*R1.fastq" > $RNALIST
+find $UN_OR_DIR $UN_LONG_DIR -iname "*.fastq" > $FQLIST
+
+mkdir -p $TM_OR_DIR
+mkdir -p $TM_LONG_DIR
 
 export TODO="files_todo"
 
@@ -34,22 +35,24 @@ if [ -e $TODO ]; then
 fi
 
 echo "Checking if trimming has already been done for dna"
+
 while read FASTQ; do
-    
-    if [ ! -e "$DNA_DIR/$(basename $FASTQ .fastq)_val_1.fq" ]; then
-        echo $FASTQ >> $TODO
+
+    if [[ $FASTQ =~ "Long" ]]; then
+
+        if [ ! -e "$TM_LONG_DIR/$(basename $FASTQ .fastq)_val_1.fq" ]; then
+            echo $FASTQ >> $TODO
+        fi
+
+    else
+
+        if [ ! -e "$TM_OR_DIR/$(basename $FASTQ .fastq)_val_1.fq" ]; then
+            echo $FASTQ >> $TODO
+        fi
+
     fi
 
-done < $DNALIST
-
-echo "Checking if trimming has already been done for rna"
-while read FASTQ; do
-    
-    if [ ! -e "$RNA_DIR/$(basename $FASTQ .fastq)_val_1.fq" ]; then
-        echo $FASTQ >> $TODO
-    fi
-
-done < $RNALIST
+done < $FQLIST
 
 NUM_FILES=$(lc $TODO)
 

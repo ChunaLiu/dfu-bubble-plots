@@ -20,14 +20,15 @@ module load singularity
 
 unset module
 set -u
+set -x
 
-COMMON="$WORKER_DIR/common.sh"
+CONFIG="$SCRIPT_DIR/config.sh"
 
-if [ -e $COMMON ]; then
-  . "$COMMON"
+if [[ -e $CONFIG ]]; then
+    source $CONFIG
 else
-  echo Missing common \"$COMMON\"
-  exit 1
+    echo "no config file"
+    exit 1
 fi
 
 cd $PRJ_DIR
@@ -50,25 +51,22 @@ else
 fi
 
 export trim_galore="singularity exec \
-    -B $PRJ_DIR:$SING_WD \
+    -B $DNA_DIR:$SING_WD \
     $SING_IMG/fastqc.img trim_galore" 
 
 echo "Running trim_galore on dna files, if any"
-for file in $(cat $TMP_FILES | grep "dna"); do
-    OUT_DIR=$SING_WD/dna
-    R1=$(basename $file)
-    R2=$(basename $file R1.fastq)R2.fastq
-    $trim_galore --paired --fastqc_args "-o $OUT_DIR" \
-        -o $OUT_DIR $SING_WD/dna/$R1 $SING_WD/dna/$R2 
+for file in $(cat $TMP_FILES | grep "Long"); do
+    OUT_DIR=$SING_WD/Long/trimmed
+    FASTQ=$(basename $file)
+    $trim_galore --length $MINTRIMLEN \
+        -o $OUT_DIR $SING_WD/Long/unaligned
 done
 
-echo "Running trim_galore on rna files, if any"
-for file in $(cat $TMP_FILES | grep "rna"); do
-    OUT_DIR=$SING_WD/rna
-    R1=$(basename $file)
-    R2=$(basename $file R1.fastq)R2.fastq
-    $trim_galore --paired --fastqc_args "-o $OUT_DIR" \
-        -o $OUT_DIR $SING_WD/rna/$R1 $SING_WD/rna/$R2 
+for file in $(cat $TMP_FILES | grep "OR"); do
+    OUT_DIR=$SING_WD/OR/trimmed
+    FASTQ=$(basename $file)
+    $trim_galore --length $MINTRIMLEN \
+        -o $OUT_DIR $SING_WD/OR/unaligned
 done
 
 echo Finished $(date)

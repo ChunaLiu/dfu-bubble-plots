@@ -47,6 +47,7 @@ export DNA_LONG_DIR="$DNA_DIR/Long"
 export UN_OR_DIR="$DNA_OR_DIR/unaligned"
 export UN_LONG_DIR="$DNA_LONG_DIR/unaligned"
 #trimmed and qc'ed
+export MINTRIMLEN=80
 export TM_OR_DIR="$DNA_OR_DIR/trimmed"
 export TM_LONG_DIR="$DNA_LONG_DIR/trimmed"
 
