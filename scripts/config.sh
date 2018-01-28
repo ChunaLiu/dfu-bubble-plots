@@ -50,6 +50,13 @@ export UN_LONG_DIR="$DNA_LONG_DIR/unaligned"
 export MINTRIMLEN=80
 export TM_OR_DIR="$DNA_OR_DIR/trimmed"
 export TM_LONG_DIR="$DNA_LONG_DIR/trimmed"
+#blast stuff
+export BLASTDB="/genome/nt"
+export NUMALNS="1" #first best hit
+export IDENT="85" #85% identity
+export QCOV="85" #85% query coverage
+export BLAST_OR_DIR="$DNA_OR_DIR/blast_out"
+export BLAST_LONG_DIR="$DNA_LONG_DIR/blast_out"
 
 #centrifuge directory
 export CFUGE_OR_DIR="$DNA_OR_DIR/cfuge"
