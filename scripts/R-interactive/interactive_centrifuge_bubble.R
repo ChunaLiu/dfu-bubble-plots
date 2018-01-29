@@ -5,22 +5,27 @@ library(ggplot2)
 
 
 #SETWD: Location of centrifuge_report.tsv files. Should all be in same directory
-setwd("/Users/Scott/dfu-bubble-plots/dna/Long/cfuge_nt/")
-#Longitudinal####
 
+#Longitudinal####
+setwd("/Users/Scott/dfu-bubble-plots/dna/Long/cfuge_nt/")
 
 temp = list.files(pattern="*centrifuge_report.tsv")
 myfiles = lapply(temp, read.delim)
 sample_names <- as.list(sub("*centrifuge_report.tsv", "", temp))
 myfiles = Map(cbind, myfiles, sample = sample_names)
 
-exclude="9606,32630,374840"
+exclude=""
 exclude=unlist(strsplit(exclude,","))
 
 #Filter settings, default is to remove human and synthetic constructs
 for (i in exclude) {
     myfiles <- llply(myfiles, function(x)x[x$name!=i,])
 }
+
+for (i in exclude) {
+  thing <- llply(myfiles, function(x)x[x$name==i,])
+}
+#removes nothing!!!
 
 #Proportion calculations: Each species "Number of Unique Reads" is divided by total "Unique Reads"
 
@@ -53,16 +58,18 @@ dev.off()
 #write.csv(df, file = paste0(out.dir, file_name, ".csv"))
 
 
-setwd("/Users/Scott/dfu-bubble-plots/dna/OR/cfuge_nt/")
+
+
+
 #OR####
 
-
+setwd("/Users/Scott/dfu-bubble-plots/dna/OR/cfuge_nt/")
 temp = list.files(pattern="*centrifuge_report.tsv")
 myfiles = lapply(temp, read.delim)
 sample_names <- as.list(sub("*centrifuge_report.tsv", "", temp))
 myfiles = Map(cbind, myfiles, sample = sample_names)
 
-exclude="9606,32630,374840"
+exclude=""
 exclude=unlist(strsplit(exclude,","))
 
 #Filter settings, default is to remove human and synthetic constructs
