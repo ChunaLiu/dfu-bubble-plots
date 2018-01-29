@@ -7,7 +7,7 @@ set -u
 source ./config.sh
 export CWD="$PWD"
 #batches of N
-export STEP_SIZE=3
+export STEP_SIZE=1
 
 PROG=`basename $0 ".sh"`
 STDOUT_DIR="$CWD/pbs_logs/$PROG"
@@ -18,9 +18,9 @@ cd $PRJ_DIR
 
 export FQLIST="$MY_TEMP_DIR"/"fastq_list"
 
-find $TM_OR_DIR $TM_LONG_DIR -iname "*_trimmed.fq" > $FQLIST
+find $TM_DIR $TM_LONG_DIR -iname "*_trimmed.fq" > $FQLIST
 
-mkdir -p $BLAST_OR_DIR
+mkdir -p $BLAST_DIR
 mkdir -p $BLAST_LONG_DIR
 
 export TODO="$MY_TEMP_DIR"/"files_todo"
@@ -33,19 +33,9 @@ echo "Checking if trimming has already been done for dna"
 
 while read FASTQ; do
 
-    if [[ $FASTQ =~ "Long" ]]; then
-
-        if [ ! -e "$BLAST_LONG_DIR/$(basename $FASTQ _trimmed.fq).blast" ]; then
+        if [ ! -e "$BLAST_DIR/$(basename $FASTQ _trimmed.fq).blast" ]; then
             echo $FASTQ >> $TODO
         fi
-
-    else
-
-        if [ ! -e "$BLAST_OR_DIR/$(basename $FASTQ _trimmed.fq).blast" ]; then
-            echo $FASTQ >> $TODO
-        fi
-
-    fi
 
 done < $FQLIST
 
