@@ -7,7 +7,7 @@ set -u
 source ./config.sh
 export CWD="$PWD"
 #batches of N
-export STEP_SIZE=3
+export STEP_SIZE=1
 
 PROG=`basename $0 ".sh"`
 STDOUT_DIR="$CWD/pbs_logs/$PROG"
