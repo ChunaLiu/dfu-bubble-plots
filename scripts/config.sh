@@ -63,7 +63,8 @@ export CFUGE_OR_DIR="$DNA_OR_DIR/cfuge"
 export CFUGE_LONG_DIR="$DNA_LONG_DIR/cfuge"
 
 #krona charts
-export KRONA_OUT_DIR="$PRJ_DIR/krona_out"
+export KRONA_OR_DIR="$DNA_OR_DIR/krona_out"
+export KRONA_LONG_DIR="$DNA_LONG_DIR/krona_out"
 
 #PATRIC bacterial genomes
 export GENOME_DIR="$PRJ_DIR/genomes"
