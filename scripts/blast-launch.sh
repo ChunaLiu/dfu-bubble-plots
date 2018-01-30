@@ -7,7 +7,7 @@ set -u
 source ./config.sh
 export CWD="$PWD"
 #batches of N
-export STEP_SIZE=3
+export STEP_SIZE=1
 
 PROG=`basename $0 ".sh"`
 STDOUT_DIR="$CWD/pbs_logs/$PROG"
@@ -53,7 +53,7 @@ NUM_FILES=$(lc $TODO)
 
 echo Found \"$NUM_FILES\" files in \"$PRJ_DIR\" to work on
 
-JOB=$(qsub -J 1-$NUM_FILES:$STEP_SIZE -V -N trimgalore -j oe -o "$STDOUT_DIR" $WORKER_DIR/blast.sh)
+JOB=$(qsub -J 1-$NUM_FILES:$STEP_SIZE -V -N blastn -j oe -o "$STDOUT_DIR" $WORKER_DIR/blast.sh)
 
 if [ $? -eq 0 ]; then
   echo Submitted job \"$JOB\" for you in steps of \"$STEP_SIZE.\" why me worry?.
