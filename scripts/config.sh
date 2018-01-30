@@ -1,7 +1,7 @@
 #Config.sh contains commonly used directories
 #and functions if you need them
 #main project directory and also where singularity images bind /work to
-export BIND="/rsgrps/bhurwitz/scottdaniel/dfu-bubble-plots"
+export BIND="/rsgrps/bhurwitz/cecilj/BLAST_01scott/BLAST"
 export PRJ_DIR=$BIND
 
 #scripts and such
@@ -40,9 +40,8 @@ export SING_META="/metadata"
 export SING_PRJ="/scripts"
 
 #dna and reads (this is also where reports and trimmed reads go)
-export DNA_DIR="$PRJ_DIR/dna"
-export DNA_OR_DIR="$DNA_DIR/OR"
-export DNA_LONG_DIR="$DNA_DIR/Long"
+export Nos_PROKKAcalls_DIR="/rsgrps/bhurwitz/cecilj/PROKKA/BLASTdir"
+
 #unaligned to human
 export UN_OR_DIR="$DNA_OR_DIR/unaligned"
 export UN_LONG_DIR="$DNA_LONG_DIR/unaligned"
@@ -51,12 +50,11 @@ export MINTRIMLEN=80
 export TM_OR_DIR="$DNA_OR_DIR/trimmed"
 export TM_LONG_DIR="$DNA_LONG_DIR/trimmed"
 #blast stuff
-export BLASTDB="/genome/nt"
+export BLASTDB="/genome/refseq_protein"
 export NUMALNS="1" #first best hit
-export IDENT="85" #85% identity
+export IDENT="70" #70% identity
 export QCOV="85" #85% query coverage
-export BLAST_OR_DIR="$DNA_OR_DIR/blast_out"
-export BLAST_LONG_DIR="$DNA_LONG_DIR/blast_out"
+export Nos_PBLAST_OUT="$DNA_OR_DIR/blast_out"
 
 #centrifuge directory
 export CFUGE_OR_DIR="$DNA_OR_DIR/cfuge"

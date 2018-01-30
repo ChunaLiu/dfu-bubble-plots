@@ -16,12 +16,12 @@ init_dir "$STDOUT_DIR"
 
 cd $PRJ_DIR
 
-export FQLIST="$MY_TEMP_DIR"/"fastq_list"
+export FaaLIST="$MY_TEMP_DIR"/"faa_list"
 
-find $TM_DIR $TM_LONG_DIR -iname "*_trimmed.fq" > $FQLIST
+find $GENE_CALLS "*.faa" > $FaaLIST
 
 mkdir -p $BLAST_DIR
-mkdir -p $BLAST_LONG_DIR
+
 
 export TODO="$MY_TEMP_DIR"/"files_todo"
 
@@ -31,13 +31,13 @@ fi
 
 echo "Checking if trimming has already been done for dna"
 
-while read FASTQ; do
+#while read FASTQ; do
+#
+#        if [ ! -e "$BLAST_DIR/$(basename $FASTQ _trimmed.fq).blast" ]; then
+#            echo $FASTQ >> $TODO
+#        fi
 
-        if [ ! -e "$BLAST_DIR/$(basename $FASTQ _trimmed.fq).blast" ]; then
-            echo $FASTQ >> $TODO
-        fi
-
-done < $FQLIST
+#done < $FaaLIST
 
 NUM_FILES=$(lc $TODO)
 
@@ -47,7 +47,7 @@ JOB=$(qsub -J 1-$NUM_FILES:$STEP_SIZE -V -N trimgalore -j oe -o "$STDOUT_DIR" $W
 
 if [ $? -eq 0 ]; then
   echo Submitted job \"$JOB\" for you in steps of \"$STEP_SIZE.\" why me worry?.
-else
+else`
   echo -e "\nError submitting job\n$JOB\n"
 fi
 
