@@ -38,20 +38,22 @@ while read FASTQ; do
     echo "Blasting $FASTQ against $BLASTDB"
 
     if [[ $FASTQ =~ "Long" ]]; then
-
-      fastq-to-fasta.py -o- $FASTQ | blastn -db $BLASTDB \
-          -query - -num_alignments $NUMALNS -perc_identity $IDENT \
+        
+        fastq-to-fasta.py -o- $FASTQ | blastn -db $BLASTDB \
+          -query - -max_target_seqs $NUMALNS -perc_identity $IDENT \
           -qcov_hsp_perc $QCOV -num_threads 12 \
           -out $BLAST_LONG_DIR/$BASE.blast \
           -outfmt '6 qaccver saccver pident qcovhsp length mismatch gapopen qstart qend sstart send evalue bitscore staxid'
+        sort -k1,1 -k13,13nr -k12,12n $BLAST_LONG_DIR/$BASE.blast | sort -u -k1,1 --merge > $UNIQ_BLAST_LONG/$BASE.best_single_hits
 
     else
-
-       fastq-to-fasta.py -o- $FASTQ | blastn -db $BLASTDB \
-          -query - -num_alignments $NUMALNS -perc_identity $IDENT \
+        
+        fastq-to-fasta.py -o- $FASTQ | blastn -db $BLASTDB \
+          -query - -max_target_seqs $NUMALNS -perc_identity $IDENT \
           -qcov_hsp_perc $QCOV -num_threads 12 \
           -out $BLAST_OR_DIR/$BASE.blast \
           -outfmt '6 qaccver saccver pident qcovhsp length mismatch gapopen qstart qend sstart send evalue bitscore staxid'
+        sort -k1,1 -k13,13nr -k12,12n $BLAST_OR_DIR/$BASE.blast | sort -u -k1,1 --merge > $UNIQ_BLAST_OR/$BASE.best_single_hits
     
     fi
 

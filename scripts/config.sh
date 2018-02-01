@@ -57,6 +57,8 @@ export IDENT="85" #85% identity
 export QCOV="85" #85% query coverage
 export BLAST_OR_DIR="$DNA_OR_DIR/blast_out"
 export BLAST_LONG_DIR="$DNA_LONG_DIR/blast_out"
+export UNIQ_BLAST_OR="$BLAST_OR_DIR/unique_best_hits"
+export UNIQ_BLAST_LONG="$BLAST_LONG_DIR/unique_best_hits"
 
 #centrifuge directory
 export CFUGE_OR_DIR="$DNA_OR_DIR/cfuge"

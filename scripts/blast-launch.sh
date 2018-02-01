@@ -29,7 +29,7 @@ if [ -e $TODO ]; then
     rm $TODO
 fi
 
-echo "Checking if trimming has already been done for dna"
+echo "Checking if blast has already been done for a file"
 
 while read FASTQ; do
 
