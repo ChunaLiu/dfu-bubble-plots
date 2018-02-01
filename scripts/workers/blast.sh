@@ -44,7 +44,7 @@ while read FASTQ; do
           -qcov_hsp_perc $QCOV -num_threads 12 \
           -out $BLAST_LONG_DIR/$BASE.blast \
           -outfmt '6 qaccver saccver pident qcovhsp length mismatch gapopen qstart qend sstart send evalue bitscore staxid'
-        sort -k1,1 -k13,13nr -k12,12n $BLAST_LONG_DIR/$BASE.blast | sort -u -k1,1 --merge > $UNIQ_BLAST_LONG/$BASE.best_single_hits
+        sort -k1,1 -k13,13nr -k12,12n $BLAST_LONG_DIR/$BASE.blast | sort -u -k1,1 -k14,14 --merge > $UNIQ_BLAST_LONG/$BASE.best_single_hits
 
     else
         
@@ -53,7 +53,7 @@ while read FASTQ; do
           -qcov_hsp_perc $QCOV -num_threads 12 \
           -out $BLAST_OR_DIR/$BASE.blast \
           -outfmt '6 qaccver saccver pident qcovhsp length mismatch gapopen qstart qend sstart send evalue bitscore staxid'
-        sort -k1,1 -k13,13nr -k12,12n $BLAST_OR_DIR/$BASE.blast | sort -u -k1,1 --merge > $UNIQ_BLAST_OR/$BASE.best_single_hits
+        sort -k1,1 -k13,13nr -k12,12n $BLAST_OR_DIR/$BASE.blast | sort -u -k1,1 -k14,14 --merge > $UNIQ_BLAST_OR/$BASE.best_single_hits
     
     fi
 

@@ -22,6 +22,8 @@ find $TM_OR_DIR $TM_LONG_DIR -iname "*_trimmed.fq" > $FQLIST
 
 mkdir -p $BLAST_OR_DIR
 mkdir -p $BLAST_LONG_DIR
+mkdir -p $UNIQ_BLAST_OR
+mkdir -p $UNIQ_BLAST_LONG
 
 export TODO="$MY_TEMP_DIR"/"files_todo"
 
